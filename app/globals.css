@@ -210,14 +210,13 @@ a {
 }
 
 .messenger-link--max {
-  width: 38px;
-  border-radius: 999px;
+  border-radius: 10px;
   background: linear-gradient(135deg, #1677ff 0%, #7a3cff 100%);
 }
 
 .messenger-link--max svg {
-  width: 26px;
-  height: 16px;
+  width: 19px;
+  height: 19px;
 }
 
 .messenger-link:hover {
@@ -3470,7 +3469,7 @@ input:focus-visible {
     z-index: 60;
     grid-template-columns: auto minmax(0, 1fr) 42px;
     justify-content: space-between;
-    gap: 8px;
+    gap: 12px;
     height: 58px;
     padding: 7px;
     border: 1px solid rgba(17, 17, 17, 0.08);
@@ -3516,9 +3515,10 @@ input:focus-visible {
     grid-column: 2;
     align-items: center;
     justify-self: start;
-    gap: 5px;
+    justify-content: space-between;
+    gap: 10px;
+    width: 100%;
     min-width: 0;
-    padding-right: 43px;
   }
 
   .site-header__phone {
@@ -3535,6 +3535,7 @@ input:focus-visible {
   .messenger-links {
     display: flex;
     gap: 4px;
+    margin-left: auto;
     flex: 0 0 auto;
   }
 
@@ -3552,12 +3553,12 @@ input:focus-visible {
   }
 
   .messenger-link--max {
-    width: 31px;
+    border-radius: 8px;
   }
 
   .messenger-link--max svg {
-    width: 22px;
-    height: 13px;
+    width: 15px;
+    height: 15px;
   }
 
   .site-header .brand {
