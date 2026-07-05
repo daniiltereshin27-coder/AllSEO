@@ -299,7 +299,9 @@ export function CasesExplorer() {
               disabled={!canScrollLeft}
               aria-label="Прокрутить категории влево"
             >
-              <span className="icon-arrow icon-arrow--left" aria-hidden="true" />
+              <span className="case-categories__arrow-glyph" aria-hidden="true">
+                ‹
+              </span>
             </button>
             <button
               type="button"
@@ -307,7 +309,9 @@ export function CasesExplorer() {
               disabled={!canScrollRight}
               aria-label="Прокрутить категории вправо"
             >
-              <span className="icon-arrow icon-arrow--right" aria-hidden="true" />
+              <span className="case-categories__arrow-glyph" aria-hidden="true">
+                ›
+              </span>
             </button>
           </div>
         </div>

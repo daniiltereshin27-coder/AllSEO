@@ -37,7 +37,7 @@ export const siteContent = {
   },
   facts: [
     {
-      value: "10 из 10",
+      value: "10 из 10 в ТОПе",
       label: "Цель теста: все ключевые запросы входят в ТОП‑10",
     },
     {

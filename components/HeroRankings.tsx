@@ -265,7 +265,7 @@ export function HeroRankings() {
       <div className="ranking-board__confirmation" data-confirmation>
         <span>✓</span>
         <strong>
-          Цель: <span data-goal-counter>0</span> из 10
+          Цель: <span data-goal-counter>0</span> из 10 запросов в ТОПе
         </strong>
         <small>ваши запросы в ТОП‑10</small>
       </div>

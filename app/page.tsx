@@ -1,4 +1,5 @@
 import { HeroRankings } from "@/components/HeroRankings";
+import { HeaderActions } from "@/components/HeaderActions";
 import { Icon } from "@/components/Icon";
 import { LeadForm } from "@/components/LeadForm";
 import {
@@ -50,12 +51,7 @@ export default function Home() {
           <a href="#proof">Результат</a>
           <a href="#faq">Вопросы</a>
         </nav>
-        <QuickLeadTrigger
-          source="header"
-          className="button button--header"
-        >
-          Выбрать запросы <span className="icon-arrow button__arrow" aria-hidden="true" />
-        </QuickLeadTrigger>
+        <HeaderActions />
       </header>
 
       <section className="hero" id="top">

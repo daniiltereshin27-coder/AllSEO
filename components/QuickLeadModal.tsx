@@ -189,7 +189,7 @@ export function QuickLeadModal() {
             <h3 id="quick-lead-title">Выберем запросы для вашего сайта</h3>
             <p className="case-lead-modal__description">
               Оставьте сайт и телефон. Менеджер свяжется в течение 5 минут и
-              согласует коммерческую группу.
+              согласует группу целевых запросов.
             </p>
             <form onSubmit={handleSubmit} noValidate>
               <label>
