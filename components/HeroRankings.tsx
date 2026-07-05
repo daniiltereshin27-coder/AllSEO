@@ -14,6 +14,7 @@ export function HeroRankings() {
     const reduceMotion = window.matchMedia(
       "(prefers-reduced-motion: reduce)",
     ).matches;
+    const compactMotion = window.matchMedia("(max-width: 560px)").matches;
     const cards = Array.from(root.querySelectorAll<HTMLElement>("[data-rank]"));
     const counters = Array.from(
       root.querySelectorAll<HTMLElement>("[data-counter]"),
@@ -30,7 +31,7 @@ export function HeroRankings() {
     growthLine.style.strokeDasharray = `${growthLength}`;
     growthLine.style.strokeDashoffset = `${growthLength}`;
 
-    if (reduceMotion) {
+    if (reduceMotion || compactMotion) {
       cards.forEach((card) => gsap.set(card, { xPercent: 0, opacity: 1 }));
       counters.forEach((counter, index) => {
         counter.textContent = String(rankingQueries[index].to);

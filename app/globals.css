@@ -25,6 +25,7 @@
 
 html {
   scroll-behavior: smooth;
+  overflow-x: hidden;
 }
 
 body {
@@ -3263,9 +3264,15 @@ input:focus-visible {
 }
 
 @media (max-width: 560px) {
+  .container,
+  .site-header {
+    width: calc(100% - 28px);
+    max-width: calc(100% - 28px);
+  }
+
   .hero__seo {
     top: 155px;
-    right: -8%;
+    right: -18%;
     font-size: 86px;
     opacity: 0.52;
   }
@@ -3274,9 +3281,19 @@ input:focus-visible {
   .hero__content,
   .hero__motion,
   .hero__description {
-    width: 100%;
-    max-width: calc(100vw - 30px);
+    max-width: 100%;
     min-width: 0;
+  }
+
+  .hero__layout {
+    width: calc(100% - 28px);
+    max-width: calc(100% - 28px);
+  }
+
+  .hero__content,
+  .hero__motion,
+  .hero__description {
+    width: 100%;
   }
 
   .site-header > .button {
@@ -3291,8 +3308,10 @@ input:focus-visible {
   }
 
   .hero__title {
-    font-size: 37px;
-    letter-spacing: -0.07em;
+    max-width: 100%;
+    font-size: clamp(31px, 9.6vw, 37px);
+    letter-spacing: -0.055em;
+    line-height: 1.04;
   }
 
   .hero__yandex {
@@ -3301,30 +3320,36 @@ input:focus-visible {
   }
 
   .hero__title-line--small {
-    font-size: 0.67em;
+    font-size: 0.64em;
+    letter-spacing: -0.04em;
   }
 
   .hero__description {
+    max-width: min(100%, 330px);
     margin-top: 24px;
-    font-size: 15px;
+    font-size: 12.5px;
+    line-height: 1.5;
+    overflow-wrap: break-word;
   }
 
   .hero__microproof {
-    gap: 8px 16px;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 7px;
     font-size: 12px;
     line-height: 1.3;
   }
 
   .ranking-board {
-    --ranking-zone-width: 26%;
-    width: calc(100vw - 30px);
-    max-width: calc(100vw - 30px);
-    min-height: 378px;
+    --ranking-zone-width: 20%;
+    width: 100%;
+    max-width: 100%;
+    min-height: 325px;
+    padding: 14px;
     transform: none;
   }
 
-  .ranking-board__header > span,
-  .ranking-row__query {
+  .ranking-board__header > span {
     display: none;
   }
 
@@ -3333,7 +3358,9 @@ input:focus-visible {
   }
 
   .ranking-row__track {
-    margin-left: 24px;
+    margin-left: 31px;
+    width: calc(100% - 31px);
+    height: 22px;
   }
 
   .ranking-board__axis {
@@ -3341,14 +3368,59 @@ input:focus-visible {
     font-size: 7px;
   }
 
+  .ranking-board__rows {
+    display: none;
+  }
+
   .ranking-row__card {
-    width: 27%;
+    width: min(39%, 128px);
+    height: 20px;
     justify-content: flex-end;
-    padding-left: 4px;
+    gap: 4px;
+    padding: 0 4px 0 6px;
+    border-radius: 7px;
   }
 
   .ranking-board__zone {
+    top: 55px;
+    right: 14px;
+    bottom: 58px;
     width: var(--ranking-zone-width);
+  }
+
+  .ranking-board__growth {
+    top: 68px;
+    bottom: 78px;
+    left: 44px;
+    width: calc(100% - 72px);
+    height: auto;
+  }
+
+  .ranking-board__marker-layer {
+    top: 68px;
+    bottom: 78px;
+    left: 44px;
+    width: calc(100% - 72px);
+  }
+
+  .ranking-board__marker--start {
+    top: 91%;
+    left: 0;
+  }
+
+  .ranking-board__marker--end {
+    top: 2%;
+    left: 76%;
+  }
+
+  .ranking-board__confirmation {
+    position: absolute;
+    right: 14px;
+    bottom: 14px;
+    left: 14px;
+    width: auto;
+    justify-content: center;
+    margin: 0;
   }
 
   .ranking-board__confirmation small {
@@ -3377,23 +3449,49 @@ input:focus-visible {
     height: 9px;
   }
 
-  .ranking-board__growth,
-  .ranking-board__marker-layer {
-    bottom: 96px;
-    height: auto;
-  }
-
   .ranking-board__axis {
-    bottom: 100px;
+    top: 70px;
+    bottom: 84px;
   }
 
   .lead-form {
+    width: 100%;
+    max-width: 100%;
     padding: 22px;
     border-radius: 24px;
+    overflow: hidden;
   }
 
   .lead-form h2 {
     font-size: 20px;
+  }
+
+  .lead-form__heading {
+    gap: 12px;
+  }
+
+  .lead-form__price {
+    flex-basis: 48px;
+    width: 48px;
+    height: 48px;
+    font-size: 13px;
+  }
+
+  .lead-form__submit {
+    min-height: 58px;
+    padding-inline: 18px 8px;
+    font-size: 15px;
+    line-height: 1.15;
+  }
+
+  .lead-form__trust {
+    display: grid;
+    grid-template-columns: 1fr;
+    justify-items: start;
+    gap: 7px;
+    padding-left: 18px;
+    font-size: 9px;
+    letter-spacing: 0.04em;
   }
 
   .process-grid,
