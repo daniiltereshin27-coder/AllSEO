@@ -167,7 +167,7 @@ a {
 .site-header__phone {
   display: inline-flex;
   color: var(--ink);
-  font-size: 15px;
+  font-size: 16px;
   font-weight: 950;
   letter-spacing: -0.045em;
   line-height: 1;
@@ -177,14 +177,14 @@ a {
 .messenger-links {
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: 10px;
 }
 
 .messenger-link {
   display: grid;
   place-items: center;
-  width: 34px;
-  height: 34px;
+  width: 36px;
+  height: 36px;
   border: 1px solid rgba(255, 255, 255, 0.42);
   border-radius: 50%;
   color: var(--white);
@@ -197,8 +197,8 @@ a {
 
 .messenger-link svg {
   display: block;
-  width: 20px;
-  height: 20px;
+  width: 21px;
+  height: 21px;
 }
 
 .messenger-link--whatsapp {
@@ -210,13 +210,13 @@ a {
 }
 
 .messenger-link--max {
-  border-radius: 10px;
+  border-radius: 50%;
   background: linear-gradient(135deg, #1677ff 0%, #7a3cff 100%);
 }
 
 .messenger-link--max svg {
-  width: 21px;
-  height: 21px;
+  width: 22px;
+  height: 22px;
 }
 
 .messenger-link:hover {
@@ -3525,40 +3525,40 @@ input:focus-visible {
     display: inline-flex;
     min-width: 0;
     color: var(--ink);
-    font-size: clamp(12px, 3.45vw, 13.5px);
-    font-weight: 900;
-    letter-spacing: -0.04em;
+    font-size: clamp(13px, 3.7vw, 14.5px);
+    font-weight: 950;
+    letter-spacing: -0.055em;
     line-height: 1;
     white-space: nowrap;
   }
 
   .messenger-links {
     display: flex;
-    gap: 7px;
+    gap: 9px;
     margin-left: auto;
     flex: 0 0 auto;
   }
 
   .messenger-link {
     display: grid;
-    width: 30px;
-    height: 30px;
+    width: 32px;
+    height: 32px;
     border-color: rgba(17, 17, 17, 0.14);
     box-shadow: 0 5px 12px rgba(17, 17, 17, 0.08);
   }
 
   .messenger-link svg {
-    width: 18px;
-    height: 18px;
+    width: 19px;
+    height: 19px;
   }
 
   .messenger-link--max {
-    border-radius: 8px;
+    border-radius: 50%;
   }
 
   .messenger-link--max svg {
-    width: 18px;
-    height: 18px;
+    width: 20px;
+    height: 20px;
   }
 
   .site-header .brand {
