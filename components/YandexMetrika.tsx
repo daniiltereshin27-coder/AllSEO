@@ -1,5 +1,5 @@
 export function YandexMetrika() {
-  const counterId = process.env.NEXT_PUBLIC_YM_ID ?? "110424324";
+  const counterId = process.env.NEXT_PUBLIC_YM_ID || "110424324";
 
   return (
     <>
