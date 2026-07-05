@@ -10,6 +10,21 @@ export const metadata: Metadata = {
     index: true,
     follow: true,
   },
+  icons: {
+    icon: [
+      {
+        url: "/favicon.svg",
+        type: "image/svg+xml",
+      },
+      {
+        url: "/icon.svg",
+        type: "image/svg+xml",
+        sizes: "any",
+      },
+    ],
+    shortcut: "/favicon.svg",
+    apple: "/favicon.svg",
+  },
   openGraph: {
     title: "Бесплатный SEO-демотест Allerhand SEO",
     description:
