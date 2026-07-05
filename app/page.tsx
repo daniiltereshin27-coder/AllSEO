@@ -47,8 +47,8 @@ export default function Home() {
           </span>
         </a>
         <nav className="site-nav" aria-label="Основная навигация">
+          <a href="#cases">Кейсы</a>
           <a href="#process">Как работает</a>
-          <a href="#proof">Результат</a>
           <a href="#faq">Вопросы</a>
         </nav>
         <HeaderActions />
@@ -345,6 +345,9 @@ export default function Home() {
             ресурсом, сервисом или партнёром Яндекса.
           </p>
           <div className="site-footer__links">
+            <a href="https://allerhand.ru/" target="_blank" rel="noreferrer">
+              Студия разработки
+            </a>
             <a href="#process">Как работает</a>
             <a href="#faq">FAQ</a>
             <QuickLeadTrigger source="footer">

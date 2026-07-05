@@ -48,8 +48,8 @@ export default function RootLayout({
   return (
     <html lang="ru">
       <body>
-        {children}
         <YandexMetrika />
+        {children}
       </body>
     </html>
   );
