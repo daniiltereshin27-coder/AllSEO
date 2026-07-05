@@ -438,7 +438,6 @@ export function CasesExplorer() {
                       type="tel"
                       inputMode="tel"
                       autoComplete="tel"
-                      autoFocus
                       placeholder="+7 (999) 000-00-00"
                       value={leadPhone}
                       aria-invalid={leadStatus === "error"}

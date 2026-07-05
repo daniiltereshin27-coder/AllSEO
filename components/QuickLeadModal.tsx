@@ -198,7 +198,6 @@ export function QuickLeadModal() {
                   type="text"
                   inputMode="url"
                   autoComplete="url"
-                  autoFocus
                   placeholder="example.ru"
                   value={site}
                   aria-invalid={Boolean(fieldErrors.site)}
