@@ -177,14 +177,14 @@ a {
 .messenger-links {
   display: flex;
   align-items: center;
-  gap: 6px;
+  gap: 8px;
 }
 
 .messenger-link {
   display: grid;
   place-items: center;
-  width: 30px;
-  height: 30px;
+  width: 34px;
+  height: 34px;
   border: 1px solid rgba(255, 255, 255, 0.42);
   border-radius: 50%;
   color: var(--white);
@@ -197,8 +197,8 @@ a {
 
 .messenger-link svg {
   display: block;
-  width: 17px;
-  height: 17px;
+  width: 20px;
+  height: 20px;
 }
 
 .messenger-link--whatsapp {
@@ -215,8 +215,8 @@ a {
 }
 
 .messenger-link--max svg {
-  width: 19px;
-  height: 19px;
+  width: 21px;
+  height: 21px;
 }
 
 .messenger-link:hover {
@@ -3534,22 +3534,22 @@ input:focus-visible {
 
   .messenger-links {
     display: flex;
-    gap: 4px;
+    gap: 7px;
     margin-left: auto;
     flex: 0 0 auto;
   }
 
   .messenger-link {
     display: grid;
-    width: 23px;
-    height: 23px;
+    width: 30px;
+    height: 30px;
     border-color: rgba(17, 17, 17, 0.14);
     box-shadow: 0 5px 12px rgba(17, 17, 17, 0.08);
   }
 
   .messenger-link svg {
-    width: 14px;
-    height: 14px;
+    width: 18px;
+    height: 18px;
   }
 
   .messenger-link--max {
@@ -3557,8 +3557,8 @@ input:focus-visible {
   }
 
   .messenger-link--max svg {
-    width: 15px;
-    height: 15px;
+    width: 18px;
+    height: 18px;
   }
 
   .site-header .brand {
