@@ -43,7 +43,7 @@ export const medicalCases: SeoCase[] = [
     title: "Profident73",
     website: "https://profident73.ru/",
     meta: "Ульяновск · стоматологическая клиника",
-    image: "/cases/profident-topvisor.png",
+    image: "/cases/profident-topvisor.jpg",
     imageAlt: "Позиции сайта Profident73 в Topvisor",
     highlights: [
       "Большинство запросов в ТОП‑1",
@@ -79,7 +79,7 @@ export const medicalCases: SeoCase[] = [
     category: "Стоматология",
     title: "Люмидент",
     meta: "Москва · Яндекс · срез Topvisor 01.11.2025",
-    image: "/cases/lumident-topvisor.png",
+    image: "/cases/lumident-topvisor.jpg",
     imageAlt: "Позиции сайта Люмидент в Topvisor",
     highlights: ["5069 запросов в проекте", "ТОП‑1 по ключевым услугам"],
     queries: [
@@ -96,7 +96,7 @@ export const medicalCases: SeoCase[] = [
     category: "Стоматология",
     title: "zdorovih32",
     meta: "Ульяновск · Яндекс · срез Topvisor 02.12.2024",
-    image: "/cases/zdorovih32-topvisor.png",
+    image: "/cases/zdorovih32-topvisor.jpg",
     imageAlt: "Позиции сайта zdorovih32 в Topvisor",
     highlights: ["324 запроса в проекте", "ТОП‑5 по основным запросам"],
     queries: [
@@ -154,7 +154,7 @@ export const realEstateCases: SeoCase[] = [
     category: "Инвестиционная недвижимость",
     title: "COAST INVEST",
     meta: "Краснодар · Яндекс · срез Topvisor 01.06.2026",
-    image: "/cases/coast-invest-topvisor.png",
+    image: "/cases/coast-invest-topvisor.jpg",
     imageAlt: "Позиции проекта COAST INVEST в Topvisor",
     highlights: [
       "Большинство запросов в ТОП‑3",
@@ -183,7 +183,7 @@ export const b2bCases: SeoCase[] = [
     category: "Оптовые поставки СУГ",
     title: "GazTrade",
     meta: "Москва · Яндекс · срез Topvisor 01.06.2025",
-    image: "/cases/gaztrade-topvisor.png",
+    image: "/cases/gaztrade-topvisor.jpg",
     imageAlt: "Позиции проекта GazTrade в Topvisor",
     highlights: [
       "Большинство коммерческих запросов в ТОП‑3",
