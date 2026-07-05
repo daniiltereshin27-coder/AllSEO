@@ -1,0 +1,29 @@
+{
+  "name": "allerhand-seo-landing",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "eslint .",
+    "verify:api": "node scripts/verify-api.mjs"
+  },
+  "dependencies": {
+    "gsap": "^3.13.0",
+    "next": "16.2.9",
+    "react": "19.2.3",
+    "react-dom": "19.2.3"
+  },
+  "devDependencies": {
+    "@types/node": "^24.0.0",
+    "@types/react": "^19.0.0",
+    "@types/react-dom": "^19.0.0",
+    "eslint": "^9.0.0",
+    "eslint-config-next": "16.2.9",
+    "typescript": "^5.9.0"
+  },
+  "optionalDependencies": {
+    "@next/swc-darwin-arm64": "^16.2.9"
+  }
+}
