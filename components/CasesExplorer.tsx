@@ -13,9 +13,7 @@ import {
 } from "react";
 import {
   caseCategories,
-  b2bCases,
-  medicalCases,
-  realEstateCases,
+  casesByCategory,
   type CaseCategory,
   type SeoCase,
 } from "@/lib/cases-content";
@@ -240,14 +238,7 @@ export function CasesExplorer() {
     }
   };
 
-  const visibleCases =
-    activeCategory === "Медицина"
-      ? medicalCases
-      : activeCategory === "Недвижимость"
-        ? realEstateCases
-        : activeCategory === "B2B"
-          ? b2bCases
-        : [];
+  const visibleCases = casesByCategory[activeCategory] ?? [];
 
   return (
     <section className="section section--case-explorer" id="cases">
@@ -328,6 +319,11 @@ export function CasesExplorer() {
                     </div>
                     <h3>{item.title}</h3>
                     <p className="case-card__location">{item.meta}</p>
+                    {item.description && (
+                      <p className="case-featured__description">
+                        {item.description}
+                      </p>
+                    )}
                     <div className="case-highlights">
                       {item.highlights.map((highlight) => (
                         <strong key={highlight}>{highlight}</strong>
