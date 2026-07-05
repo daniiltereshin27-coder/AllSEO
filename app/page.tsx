@@ -54,7 +54,7 @@ export default function Home() {
           source="header"
           className="button button--header"
         >
-          Выбрать запросы <span aria-hidden="true">↗</span>
+          Выбрать запросы <span className="icon-arrow button__arrow" aria-hidden="true" />
         </QuickLeadTrigger>
       </header>
 
@@ -151,7 +151,7 @@ export default function Home() {
               >
                 <div className="process-card__top">
                   <span>{step.number}</span>
-                  <i aria-hidden="true">↗</i>
+                  <i className="icon-arrow icon-arrow--inline" aria-hidden="true" />
                 </div>
                 <h3>{step.title}</h3>
                 <p>{step.description}</p>
@@ -257,7 +257,7 @@ export default function Home() {
               href="#final-form"
               className="text-link"
             >
-              Продвинуть запросы за 0₽ <span aria-hidden="true">↗</span>
+              Продвинуть запросы за 0₽ <span className="icon-arrow icon-arrow--inline" aria-hidden="true" />
             </TrackedLink>
           </Reveal>
         </div>

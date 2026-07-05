@@ -188,14 +188,95 @@ input:focus-visible {
   transform: none;
 }
 
-.button__arrow {
-  display: grid;
+.icon-arrow {
+  --arrow-size: 40px;
+  --arrow-color: var(--white);
+  position: relative;
+  display: inline-grid;
   place-items: center;
-  width: 30px;
-  height: 30px;
+  flex: 0 0 auto;
+  width: var(--arrow-size);
+  height: var(--arrow-size);
   border-radius: 50%;
   background: var(--ink);
-  color: var(--white);
+  color: inherit;
+  font-size: 0;
+  line-height: 0;
+  vertical-align: middle;
+}
+
+.icon-arrow::before,
+.icon-arrow::after {
+  position: absolute;
+  content: "";
+  pointer-events: none;
+}
+
+.icon-arrow::before {
+  top: 50%;
+  left: 27%;
+  width: 46%;
+  height: 2px;
+  border-radius: 999px;
+  background: var(--arrow-color);
+  transform: translateY(-50%) rotate(-45deg);
+  transform-origin: center;
+}
+
+.icon-arrow::after {
+  top: 28%;
+  right: 27%;
+  width: 28%;
+  height: 28%;
+  border-top: 2px solid var(--arrow-color);
+  border-right: 2px solid var(--arrow-color);
+  border-radius: 1px;
+}
+
+.icon-arrow--inline {
+  --arrow-size: 18px;
+  --arrow-color: currentColor;
+  border-radius: 0;
+  background: transparent;
+}
+
+.icon-arrow--left,
+.icon-arrow--right {
+  --arrow-size: 18px;
+  --arrow-color: currentColor;
+  border-radius: 0;
+  background: transparent;
+}
+
+.icon-arrow--left::before,
+.icon-arrow--right::before {
+  left: 16%;
+  width: 68%;
+  transform: translateY(-50%);
+}
+
+.icon-arrow--left::after,
+.icon-arrow--right::after {
+  top: 29%;
+  width: 38%;
+  height: 38%;
+}
+
+.icon-arrow--right::after {
+  right: 14%;
+}
+
+.icon-arrow--left::after {
+  right: auto;
+  left: 14%;
+  border-top: 0;
+  border-right: 0;
+  border-bottom: 2px solid var(--arrow-color);
+  border-left: 2px solid var(--arrow-color);
+}
+
+.button__arrow {
+  --arrow-size: 30px;
 }
 
 .hero {
@@ -2540,11 +2621,15 @@ input:focus-visible {
 }
 
 .audience-card li::before {
+  position: relative;
   flex: 0 0 auto;
-  content: "↗";
+  content: "";
+  width: 13px;
+  height: 13px;
   margin: 0.05em 12px 0 0;
-  color: var(--red);
-  font-weight: 900;
+  border-top: 2px solid var(--red);
+  border-right: 2px solid var(--red);
+  transform: translateY(3px);
 }
 
 .section--next {

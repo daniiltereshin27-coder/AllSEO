@@ -232,9 +232,7 @@ export function LeadForm({ id, variant = "hero" }: LeadFormProps) {
             ? "Отправляем…"
             : "Продвинуть запросы за 0₽"}
         </span>
-        <span className="button__arrow" aria-hidden="true">
-          ↗
-        </span>
+        <span className="icon-arrow button__arrow" aria-hidden="true" />
       </button>
 
       {status === "error" && (

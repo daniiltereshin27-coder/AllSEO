@@ -41,7 +41,7 @@ function ProofButton({
         sizes="(max-width: 820px) 100vw, 50vw"
       />
       <span>
-        Открыть данные Topvisor <i aria-hidden="true">↗</i>
+        Открыть данные Topvisor <i className="icon-arrow icon-arrow--inline" aria-hidden="true" />
       </span>
     </button>
   );
@@ -288,7 +288,7 @@ export function CasesExplorer() {
                 }}
               >
                 {category}
-                <span aria-hidden="true">↗</span>
+                <span className="icon-arrow icon-arrow--inline" aria-hidden="true" />
               </button>
             ))}
           </div>
@@ -299,7 +299,7 @@ export function CasesExplorer() {
               disabled={!canScrollLeft}
               aria-label="Прокрутить категории влево"
             >
-              ←
+              <span className="icon-arrow icon-arrow--left" aria-hidden="true" />
             </button>
             <button
               type="button"
@@ -307,7 +307,7 @@ export function CasesExplorer() {
               disabled={!canScrollRight}
               aria-label="Прокрутить категории вправо"
             >
-              →
+              <span className="icon-arrow icon-arrow--right" aria-hidden="true" />
             </button>
           </div>
         </div>
@@ -336,7 +336,7 @@ export function CasesExplorer() {
                       onClick={() => openLeadModal(item)}
                     >
                       <span>Хочу также</span>
-                      <i aria-hidden="true">↗</i>
+                      <i className="icon-arrow" aria-hidden="true" />
                     </button>
                   </div>
                 </article>
@@ -466,7 +466,7 @@ export function CasesExplorer() {
                         ? "Отправляем…"
                         : "Хочу такой результат"}
                     </span>
-                    <i aria-hidden="true">↗</i>
+                    <i className="icon-arrow" aria-hidden="true" />
                   </button>
                   <small>
                     Нажимая кнопку, вы соглашаетесь на обработку номера телефона

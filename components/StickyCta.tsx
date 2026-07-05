@@ -28,7 +28,7 @@ export function StickyCta() {
         source="sticky"
         className="button button--primary"
       >
-        Выбрать запросы <span aria-hidden="true">↗</span>
+        Выбрать запросы <span className="icon-arrow button__arrow" aria-hidden="true" />
       </QuickLeadTrigger>
     </div>
   );

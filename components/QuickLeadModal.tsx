@@ -248,7 +248,7 @@ export function QuickLeadModal() {
                     ? "Отправляем…"
                     : "Продвинуть запросы за 0₽"}
                 </span>
-                <i aria-hidden="true">↗</i>
+                <i className="icon-arrow" aria-hidden="true" />
               </button>
               <small>
                 Нажимая кнопку, вы соглашаетесь на обработку данных для связи по
