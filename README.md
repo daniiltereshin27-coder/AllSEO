@@ -17,12 +17,24 @@ npm run dev
 Укажите в `.env.local`:
 
 ```env
-LEAD_WEBHOOK_URL=https://example.com/webhook
-LEAD_WEBHOOK_SECRET=optional-secret
+SMTP_HOST=smtp.beget.com
+SMTP_PORT=465
+SMTP_USER=seo@allerhand.ru
+SMTP_PASS=app-password
+SMTP_FROM=seo@allerhand.ru
+SMTP_TO=seo@allerhand.ru
 NEXT_PUBLIC_YM_ID=12345678
 ```
 
-`POST /api/leads` отправляет в webhook событие:
+`POST /api/leads` отправляет письмо на `SMTP_TO`. Если SMTP-переменные не
+заданы, обработчик может использовать запасной webhook:
+
+```env
+LEAD_WEBHOOK_URL=https://example.com/webhook
+LEAD_WEBHOOK_SECRET=optional-secret
+```
+
+Webhook получает событие:
 
 ```json
 {
@@ -53,8 +65,8 @@ NEXT_PUBLIC_YM_ID=12345678
 npm run verify:api
 ```
 
-Проверяются валидация, доставка с секретом, защита от дублей, ошибка webhook,
-таймаут и ограничение частоты запросов.
+Проверяются валидация, доставка через запасной webhook с секретом, защита от
+дублей, ошибка webhook, таймаут и ограничение частоты запросов.
 
 ## Контент
 

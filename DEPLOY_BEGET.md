@@ -16,13 +16,20 @@
 На сервере файл `/var/www/seoallerhand.ru/current/.env.production`:
 
 ```env
+SMTP_HOST=smtp.beget.com
+SMTP_PORT=465
+SMTP_USER=
+SMTP_PASS=
+SMTP_FROM=
+SMTP_TO=seo@allerhand.ru
 LEAD_WEBHOOK_URL=
 LEAD_WEBHOOK_SECRET=
 NEXT_PUBLIC_YM_ID=
 PORT=3000
 ```
 
-`LEAD_WEBHOOK_URL` обязателен для рабочей отправки заявок.
+Для рабочей отправки заявок обязательны `SMTP_USER` и `SMTP_PASS`.
+`LEAD_WEBHOOK_URL` можно использовать как запасной канал.
 
 ## Команды установки
 

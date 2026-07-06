@@ -1,4 +1,5 @@
 import { validateLead } from "@/lib/lead-validation";
+import { sendLeadEmail } from "@/lib/smtp-mailer";
 import { createHash } from "node:crypto";
 import { NextRequest, NextResponse } from "next/server";
 
@@ -112,52 +113,61 @@ export async function POST(request: NextRequest) {
     );
   }
 
-  const webhookUrl = process.env.LEAD_WEBHOOK_URL;
-  if (!webhookUrl) {
-    return NextResponse.json(
-      {
-        message:
-          "Канал приёма заявок ещё не настроен. Укажите LEAD_WEBHOOK_URL и повторите отправку.",
-      },
-      { status: 503 },
-    );
-  }
-
-  const controller = new AbortController();
-  const timeout = setTimeout(() => controller.abort(), 8_000);
-
   try {
-    const webhookResponse = await fetch(webhookUrl, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        ...(process.env.LEAD_WEBHOOK_SECRET
-          ? {
-              Authorization: `Bearer ${process.env.LEAD_WEBHOOK_SECRET}`,
-            }
-          : {}),
-      },
-      body: JSON.stringify({
-        event: "allerhand_seo_demo_request",
-        lead: validation.data,
-        meta: {
-          ip,
-          userAgent: request.headers.get("user-agent") ?? "",
-          receivedAt: new Date().toISOString(),
-        },
-      }),
-      signal: controller.signal,
-      cache: "no-store",
-    });
+    const meta = {
+      ip,
+      userAgent: request.headers.get("user-agent") ?? "",
+      receivedAt: new Date().toISOString(),
+    };
+    const deliveredByEmail = await sendLeadEmail(validation.data, meta);
 
-    if (!webhookResponse.ok) {
-      throw new Error(`Webhook responded with ${webhookResponse.status}`);
+    if (!deliveredByEmail) {
+      const webhookUrl = process.env.LEAD_WEBHOOK_URL;
+      if (!webhookUrl) {
+        return NextResponse.json(
+          {
+            message:
+              "Канал приёма заявок ещё не настроен. Укажите SMTP_USER и SMTP_PASS.",
+          },
+          { status: 503 },
+        );
+      }
+
+      const controller = new AbortController();
+      const timeout = setTimeout(() => controller.abort(), 8_000);
+
+      try {
+        const webhookResponse = await fetch(webhookUrl, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            ...(process.env.LEAD_WEBHOOK_SECRET
+              ? {
+                  Authorization: `Bearer ${process.env.LEAD_WEBHOOK_SECRET}`,
+                }
+              : {}),
+          },
+          body: JSON.stringify({
+            event: "allerhand_seo_demo_request",
+            lead: validation.data,
+            meta,
+          }),
+          signal: controller.signal,
+          cache: "no-store",
+        });
+
+        if (!webhookResponse.ok) {
+          throw new Error(`Webhook responded with ${webhookResponse.status}`);
+        }
+      } finally {
+        clearTimeout(timeout);
+      }
     }
 
     state.duplicates.set(duplicateKey, Date.now() + 90_000);
     return NextResponse.json({ ok: true });
   } catch (error) {
-    console.error("Lead webhook error", error);
+    console.error("Lead delivery error", error);
     return NextResponse.json(
       {
         message:
@@ -165,7 +175,5 @@ export async function POST(request: NextRequest) {
       },
       { status: 502 },
     );
-  } finally {
-    clearTimeout(timeout);
   }
 }
