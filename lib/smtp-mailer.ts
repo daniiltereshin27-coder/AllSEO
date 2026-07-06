@@ -25,7 +25,7 @@ function readSmtpConfig(): SmtpConfig | null {
   if (!user || !pass) return null;
 
   return {
-    host: process.env.SMTP_HOST || "smtp.beget.com",
+    host: process.env.SMTP_HOST || "smtp.yandex.ru",
     port: Number(process.env.SMTP_PORT || 465),
     user,
     pass,

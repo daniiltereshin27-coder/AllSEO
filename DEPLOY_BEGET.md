@@ -16,7 +16,7 @@
 На сервере файл `/var/www/seoallerhand.ru/current/.env.production`:
 
 ```env
-SMTP_HOST=smtp.beget.com
+SMTP_HOST=smtp.yandex.ru
 SMTP_PORT=465
 SMTP_USER=
 SMTP_PASS=

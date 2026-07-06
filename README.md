@@ -17,7 +17,7 @@ npm run dev
 Укажите в `.env.local`:
 
 ```env
-SMTP_HOST=smtp.beget.com
+SMTP_HOST=smtp.yandex.ru
 SMTP_PORT=465
 SMTP_USER=seo@allerhand.ru
 SMTP_PASS=app-password
