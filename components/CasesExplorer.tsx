@@ -170,6 +170,11 @@ export function CasesExplorer() {
       }
 
       setLeadStatus("success");
+      trackGoal("same", {
+        form: "case_modal",
+        case: leadCase.slug,
+        utm,
+      });
       trackGoal("lead_success", {
         form: "case_modal",
         case: leadCase.slug,

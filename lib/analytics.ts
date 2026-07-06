@@ -7,8 +7,8 @@ declare global {
 }
 
 export function trackGoal(goal: string, params?: object) {
-  const rawId = process.env.NEXT_PUBLIC_YM_ID;
-  const counterId = rawId ? Number(rawId) : 0;
+  const rawId = process.env.NEXT_PUBLIC_YM_ID || "110424324";
+  const counterId = Number(rawId);
 
   if (!counterId || typeof window === "undefined" || !window.ym) {
     return;

@@ -136,6 +136,7 @@ export function QuickLeadModal() {
       }
 
       setStatus("success");
+      trackGoal("zapros", { form: "quick_lead", source, utm });
       trackGoal("lead_success", { form: "quick_lead", source, utm });
     } catch (error) {
       const errorMessage =

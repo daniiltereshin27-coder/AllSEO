@@ -95,6 +95,7 @@ export function LeadForm({ id, variant = "hero" }: LeadFormProps) {
       }
 
       setStatus("success");
+      trackGoal("free", { form: id, utm });
       trackGoal("lead_success", { form: id, utm });
     } catch (error) {
       setStatus("error");

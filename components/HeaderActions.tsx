@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { QuickLeadTrigger } from "@/components/QuickLeadModal";
+import { trackGoal } from "@/lib/analytics";
 
 const phone = "+7 (995) 099-45-57";
 
@@ -16,16 +17,19 @@ const messengerLinks = [
     href: "https://wa.me/message/2C3IEQDHIWNJK1",
     label: "WhatsApp",
     icon: "whatsapp",
+    goal: "wa",
   },
   {
     href: "https://t.me/allerhand_digital",
     label: "Telegram",
     icon: "telegram",
+    goal: "tg",
   },
   {
     href: "https://max.ru/u/f9LHodD0cOKKr1OSOqLW_N0KjdxosXHZtKdD-HlwTCoWZuLecLjuebW3ENU",
     label: "Max",
     icon: "max",
+    goal: "max",
   },
 ] as const;
 
@@ -82,6 +86,7 @@ export function HeaderActions() {
               target="_blank"
               rel="noreferrer"
               aria-label={item.label}
+              onClick={() => trackGoal(item.goal, { messenger: item.label })}
             >
               <MessengerIcon icon={item.icon} />
             </a>
