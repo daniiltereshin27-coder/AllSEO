@@ -212,7 +212,7 @@ export const autoServiceCases: SeoCase[] = [
     slug: "kuzovpro-ekb",
     category: "Автосервис",
     title: "КузовПро ЕКБ",
-    meta: "Екатеринбург · Яндекс · срез Topvisor 12.06.2026",
+    meta: "Екатеринбург · Яндекс · срез Topvisor 18.05.2026",
     image: "/cases/autobody-ekb-topvisor.png",
     imageAlt: "Позиции проекта КузовПро ЕКБ в Topvisor",
     highlights: [
@@ -236,7 +236,7 @@ export const autoServiceCases: SeoCase[] = [
     slug: "sibavtomaster",
     category: "Автосервис",
     title: "СибАвтоМастер",
-    meta: "Новосибирск · Яндекс · срез Topvisor 17.06.2026",
+    meta: "Новосибирск · Яндекс · срез Topvisor 17.03.2026",
     image: "/cases/sibavtomaster-topvisor.png",
     imageAlt: "Позиции проекта СибАвтоМастер в Topvisor",
     highlights: [
@@ -245,13 +245,13 @@ export const autoServiceCases: SeoCase[] = [
       "7,1% конверсия в заявку",
     ],
     description:
-      "Для автосервиса в Новосибирске продвигали группу запросов по ремонту АКПП, диагностике и техническому обслуживанию. В Topvisor видно, что ключевые услуги закрепились в ТОП‑1—ТОП‑2.",
+      "Для автосервиса в Новосибирске продвигали группу запросов по ремонту АКПП, диагностике и техническому обслуживанию. В Topvisor видно, что ключевые услуги закрепились в ТОП‑1—ТОП‑3.",
     queries: [
-      { query: "ремонт АКПП Новосибирск", position: "ТОП‑1" },
+      { query: "ремонт АКПП Новосибирск", position: "ТОП‑3" },
       { query: "техническое обслуживание авто Новосибирск", position: "ТОП‑2" },
       { query: "ремонт тормозной системы Новосибирск", position: "ТОП‑1" },
       { query: "диагностика автомобиля Новосибирск", position: "ТОП‑2" },
-      { query: "замена тормозных колодок Новосибирск", position: "ТОП‑7" },
+      { query: "замена тормозных колодок Новосибирск", position: "ТОП‑2" },
       { query: "15 запросов в продвижении", position: "Topvisor" },
     ],
     proof: ["Источник: Topvisor", "Поисковая система: Яндекс", "Регион: Новосибирск"],
@@ -287,7 +287,7 @@ export const educationCases: SeoCase[] = [
     slug: "speakup-kazan",
     category: "Образование · языки",
     title: "SpeakUp Академия",
-    meta: "Казань · Яндекс · срез Topvisor 15.06.2026",
+    meta: "Казань · Яндекс · срез Topvisor 13.04.2026",
     image: "/cases/speakup-kazan-topvisor.png",
     imageAlt: "Позиции проекта SpeakUp Академия в Topvisor",
     highlights: [
@@ -314,7 +314,7 @@ export const ecommerceCases: SeoCase[] = [
     slug: "domofis",
     category: "Мебель · E-commerce",
     title: "ДомОфис",
-    meta: "Ярославль · Яндекс · срез Topvisor 16.06.2026",
+    meta: "Ярославль · Яндекс · срез Topvisor 15.11.2025",
     image: "/cases/domofis-topvisor.png",
     imageAlt: "Позиции проекта ДомОфис в Topvisor",
     highlights: [
@@ -327,9 +327,9 @@ export const ecommerceCases: SeoCase[] = [
     queries: [
       { query: "купить диван интернет-магазин", position: "ТОП‑1" },
       { query: "кровать двуспальная купить", position: "ТОП‑2" },
-      { query: "стол письменный купить интернет-магазин", position: "ТОП‑1" },
-      { query: "кресло кровать купить недорого", position: "ТОП‑1" },
-      { query: "мебель интернет-магазин с доставкой", position: "ТОП‑3" },
+      { query: "стол письменный купить интернет-магазин", position: "ТОП‑2" },
+      { query: "кресло кровать купить недорого", position: "ТОП‑3" },
+      { query: "мебель интернет-магазин с доставкой", position: "ТОП‑1" },
       { query: "15 запросов в продвижении", position: "Topvisor" },
     ],
     proof: ["Источник: Topvisor", "Поисковая система: Яндекс", "Регион: Ярославль"],
@@ -338,7 +338,7 @@ export const ecommerceCases: SeoCase[] = [
     slug: "fitmarket-samara",
     category: "Спортивное питание",
     title: "FitMarket",
-    meta: "Самара · Яндекс · срез Topvisor 24.06.2026",
+    meta: "Самара · Яндекс · срез Topvisor 01.03.2026",
     image: "/cases/fitmarket-samara-topvisor.png",
     imageAlt: "Позиции проекта FitMarket в Topvisor",
     highlights: [
@@ -347,13 +347,13 @@ export const ecommerceCases: SeoCase[] = [
       "3,8% конверсия в заявку",
     ],
     description:
-      "Для магазина спортивного питания собрали группу по доставке, протеину, аминокислотам и предтренировочным комплексам. Запросы с покупательским намерением вышли в ТОП‑1—ТОП‑3.",
+      "Для магазина спортивного питания собрали группу по доставке, протеину, креатину и предтренировочным комплексам. Запросы с покупательским намерением вышли в ТОП‑1—ТОП‑4.",
     queries: [
       { query: "спортивное питание интернет-магазин Самара", position: "ТОП‑1" },
-      { query: "купить протеин онлайн Самара", position: "ТОП‑2" },
-      { query: "спортпит Самара доставка", position: "ТОП‑1" },
-      { query: "аминокислоты Самара купить", position: "ТОП‑3" },
-      { query: "предтренировочный комплекс Самара", position: "ТОП‑2" },
+      { query: "протеин купить недорого самара", position: "ТОП‑1" },
+      { query: "спортпит Самара доставка", position: "ТОП‑4" },
+      { query: "креатин купить цена самара", position: "ТОП‑2" },
+      { query: "предтренировочный комплекс купить Самара", position: "ТОП‑1" },
       { query: "15 запросов в продвижении", position: "Topvisor" },
     ],
     proof: ["Источник: Topvisor", "Поисковая система: Яндекс", "Регион: Самара"],
@@ -365,7 +365,7 @@ export const legalCases: SeoCase[] = [
     slug: "yurprofi-moscow",
     category: "Юридические услуги",
     title: "ЮрПрофи",
-    meta: "Москва · Яндекс · срез Topvisor 25.06.2026",
+    meta: "Москва · Яндекс · срез Topvisor 12.10.2026",
     image: "/cases/yurprofi-moscow-topvisor.png",
     imageAlt: "Позиции проекта ЮрПрофи в Topvisor",
     highlights: [
@@ -389,7 +389,7 @@ export const legalCases: SeoCase[] = [
     slug: "legis-peterburg",
     category: "Юридические услуги",
     title: "Legis Петербург",
-    meta: "Санкт-Петербург · Яндекс · срез Topvisor 26.06.2026",
+    meta: "Санкт-Петербург · Яндекс · срез Topvisor 25.02.2025",
     image: "/cases/legis-peterburg-topvisor.png",
     imageAlt: "Позиции проекта Legis Петербург в Topvisor",
     highlights: [
@@ -398,11 +398,11 @@ export const legalCases: SeoCase[] = [
       "5,1% конверсия в заявку",
     ],
     description:
-      "Для юридической компании в Санкт-Петербурге продвигали B2B-группу по арбитражу, договорам и корпоративному сопровождению. По данным Topvisor запросы вышли в ТОП‑1—ТОП‑3.",
+      "Для юридической компании в Санкт-Петербурге продвигали B2B-группу по арбитражу, договорам и корпоративному сопровождению. По данным Topvisor запросы вышли в ТОП‑1—ТОП‑4.",
     queries: [
       { query: "юридическое сопровождение бизнеса цена", position: "ТОП‑1" },
-      { query: "арбитраж юрист СПБ", position: "ТОП‑1" },
-      { query: "составление договора юрист цена СПБ", position: "ТОП‑1" },
+      { query: "арбитраж юрист СПБ", position: "ТОП‑4" },
+      { query: "юрист по договорам СПБ", position: "ТОП‑1" },
       { query: "корпоративный адвокат Санкт-Петербург", position: "ТОП‑2" },
       { query: "корпоративный юрист СПБ", position: "ТОП‑3" },
       { query: "15 запросов в продвижении", position: "Topvisor" },
@@ -416,7 +416,7 @@ export const constructionCases: SeoCase[] = [
     slug: "dom-mechty-krasnodar",
     category: "Строительство домов",
     title: "Дом Мечты",
-    meta: "Краснодар · Яндекс · срез Topvisor 22.06.2026",
+    meta: "Краснодар · Яндекс · срез Topvisor 24.04.2026",
     image: "/cases/dom-mechty-krasnodar-topvisor.png",
     imageAlt: "Позиции проекта Дом Мечты в Topvisor",
     highlights: [
@@ -425,13 +425,13 @@ export const constructionCases: SeoCase[] = [
       "2,3% конверсия в заявку",
     ],
     description:
-      "Для строительной компании продвигали коммерческие запросы по домам из кирпича и строительству под ключ. В группе Topvisor основные запросы вышли в ТОП‑1—ТОП‑2 по Краснодару.",
+      "Для строительной компании продвигали коммерческие запросы по домам из кирпича и строительству под ключ. В группе Topvisor основные запросы вышли в ТОП‑1—ТОП‑3 по Краснодару.",
     queries: [
-      { query: "построить дом из кирпича Краснодар", position: "ТОП‑1" },
+      { query: "стоимость строительства дома из кирпича", position: "ТОП‑1" },
       { query: "дом из кирпича под ключ цена Краснодар", position: "ТОП‑2" },
       { query: "строительство дома Краснодар недорого", position: "ТОП‑1" },
       { query: "построить дом под ключ Краснодар", position: "ТОП‑1" },
-      { query: "проекты домов из кирпича Краснодар", position: "ТОП‑2" },
+      { query: "проекты домов из кирпича Краснодар", position: "ТОП‑3" },
       { query: "15 запросов в продвижении", position: "Topvisor" },
     ],
     proof: ["Источник: Topvisor", "Поисковая система: Яндекс", "Регион: Краснодар"],
@@ -443,7 +443,7 @@ export const localBusinessCases: SeoCase[] = [
     slug: "pizzalav-ufa",
     category: "Доставка еды",
     title: "ПиццаЛав",
-    meta: "Уфа · Яндекс · срез Topvisor 19.06.2026",
+    meta: "Уфа · Яндекс · срез Topvisor 02.06.2026",
     image: "/cases/pizzalav-ufa-topvisor.png",
     imageAlt: "Позиции проекта ПиццаЛав в Topvisor",
     highlights: [
@@ -456,9 +456,9 @@ export const localBusinessCases: SeoCase[] = [
     queries: [
       { query: "заказать пиццу Уфа", position: "ТОП‑1" },
       { query: "заказать пиццу с доставкой Уфа цена", position: "ТОП‑1" },
-      { query: "пицца с доставкой Уфа акции", position: "ТОП‑1" },
+      { query: "пицца с доставкой Уфа акции", position: "ТОП‑2" },
       { query: "доставка пиццы Уфа", position: "ТОП‑3" },
-      { query: "пицца маргарита Уфа доставка", position: "ТОП‑2" },
+      { query: "пицца маргарита Уфа доставка", position: "ТОП‑1" },
       { query: "15 запросов в продвижении", position: "Topvisor" },
     ],
     proof: ["Источник: Topvisor", "Поисковая система: Яндекс", "Регион: Уфа"],
@@ -467,7 +467,7 @@ export const localBusinessCases: SeoCase[] = [
     slug: "remontdon",
     category: "Ремонт и отделка",
     title: "РемонтДон",
-    meta: "Ростов-на-Дону · Яндекс · срез Topvisor 08.06.2026",
+    meta: "Ростов-на-Дону · Яндекс · срез Topvisor 17.02.2026",
     image: "/cases/remontdon-topvisor.png",
     imageAlt: "Позиции проекта РемонтДон в Topvisor",
     highlights: [
