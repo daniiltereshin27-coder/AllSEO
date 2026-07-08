@@ -211,7 +211,11 @@ export function LeadForm({ id, variant = "hero" }: LeadFormProps) {
           }
         />
         <span>
-          Согласен на обработку данных для связи по заявке.
+          Нажимая кнопку, вы соглашаетесь на обработку{" "}
+          <a href="/privacy" target="_blank" rel="noreferrer">
+            персональных данных
+          </a>{" "}
+          в соответствии с ФЗ-152.
         </span>
       </label>
       {fieldErrors.consent && (

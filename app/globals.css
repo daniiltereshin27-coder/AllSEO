@@ -1096,6 +1096,15 @@ input:focus-visible {
   accent-color: var(--ink);
 }
 
+.consent a,
+.quick-lead-modal form small a,
+.case-lead-modal form small a {
+  color: var(--ink);
+  font-weight: 800;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
 .lead-form__submit {
   width: 100%;
   min-height: 60px;
@@ -2950,6 +2959,54 @@ input:focus-visible {
 
 .site-footer__links a[href^="https://allerhand.ru"] {
   color: var(--yellow);
+}
+
+.privacy-page {
+  min-height: 100vh;
+  padding: 42px clamp(16px, 5vw, 72px);
+  background:
+    radial-gradient(circle at 90% 4%, rgba(255, 204, 0, 0.32), transparent 28%),
+    var(--warm);
+  color: var(--ink);
+}
+
+.privacy-page__back {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  margin-bottom: 20px;
+  color: var(--ink);
+  font-size: 15px;
+  font-weight: 900;
+  text-decoration: none;
+}
+
+.privacy-page__card {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: clamp(28px, 5vw, 64px);
+  border: 1px solid rgba(17, 17, 17, 0.12);
+  border-radius: clamp(28px, 4vw, 52px);
+  background: var(--white);
+  box-shadow: 0 26px 80px rgba(17, 17, 17, 0.08);
+}
+
+.privacy-page__card h1 {
+  max-width: 820px;
+  margin: 0 0 28px;
+  font-size: clamp(36px, 6vw, 78px);
+  line-height: 0.92;
+  letter-spacing: -0.06em;
+}
+
+.privacy-page__card pre {
+  margin: 0;
+  white-space: pre-wrap;
+  font-family: var(--font-sans);
+  font-size: clamp(15px, 1.45vw, 18px);
+  font-weight: 650;
+  line-height: 1.65;
+  color: rgba(17, 17, 17, 0.78);
 }
 
 .sticky-cta {

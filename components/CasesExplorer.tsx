@@ -473,8 +473,11 @@ export function CasesExplorer() {
                     <i className="icon-arrow" aria-hidden="true" />
                   </button>
                   <small>
-                    Нажимая кнопку, вы соглашаетесь на обработку номера телефона
-                    для связи по заявке.
+                    Нажимая кнопку, вы соглашаетесь на обработку{" "}
+                    <a href="/privacy" target="_blank" rel="noreferrer">
+                      персональных данных
+                    </a>{" "}
+                    в соответствии с ФЗ-152.
                   </small>
                 </form>
               </>

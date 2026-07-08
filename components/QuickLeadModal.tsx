@@ -251,8 +251,11 @@ export function QuickLeadModal() {
                 <i className="icon-arrow" aria-hidden="true" />
               </button>
               <small>
-                Нажимая кнопку, вы соглашаетесь на обработку данных для связи по
-                заявке.
+                Нажимая кнопку, вы соглашаетесь на обработку{" "}
+                <a href="/privacy" target="_blank" rel="noreferrer">
+                  персональных данных
+                </a>{" "}
+                в соответствии с ФЗ-152.
               </small>
             </form>
           </>
