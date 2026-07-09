@@ -1,5 +1,6 @@
 import { validateLead } from "@/lib/lead-validation";
 import { sendLeadEmail } from "@/lib/smtp-mailer";
+import { sendLeadTelegram } from "@/lib/telegram-leads";
 import { createHash } from "node:crypto";
 import { NextRequest, NextResponse } from "next/server";
 
@@ -162,6 +163,12 @@ export async function POST(request: NextRequest) {
       } finally {
         clearTimeout(timeout);
       }
+    }
+
+    try {
+      await sendLeadTelegram(validation.data, meta);
+    } catch (error) {
+      console.error("Telegram lead delivery error", error);
     }
 
     state.duplicates.set(duplicateKey, Date.now() + 90_000);
