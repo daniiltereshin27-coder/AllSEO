@@ -312,7 +312,7 @@ export const medicalCases: SeoCase[] = [
     slug: "ulybka-spb",
     category: "Стоматология · Детская",
     title: "Улыбка СПБ",
-    meta: "Санкт-Петербург · Яндекс · срез Topvisor 20.06.2026",
+    meta: "Санкт-Петербург · Яндекс · срез Topvisor 22.03.2026",
     image: "/cases/ulybka-spb-topvisor.png",
     imageAlt: "Позиции проекта Улыбка СПБ в Topvisor",
     highlights: [
@@ -334,7 +334,7 @@ export const medicalCases: SeoCase[] = [
       "Источник: Topvisor",
       "Поисковая система: Яндекс",
       "Регион: Санкт-Петербург",
-      "Запросы: 178 · 20.06.2026: 83% в ТОП · 18.06.2026: 26% в ТОП",
+      "Запросы: 178 · 22.03.2026: 83% в ТОП · 18.06.2026: 26% в ТОП",
     ],
   },
   {
@@ -653,7 +653,7 @@ export const productionCases: SeoCase[] = [
     slug: "ivtekstil-ivanovo",
     category: "Производство · Детская одежда",
     title: "ИвТекстиль",
-    meta: "Иваново · Яндекс · срез Topvisor 13.06.2026",
+    meta: "Иваново · Яндекс · срез Topvisor 28.08.2025",
     image: "/cases/ivtekstil-topvisor.png",
     imageAlt: "Позиции проекта ИвТекстиль в Topvisor",
     highlights: [
@@ -677,7 +677,7 @@ export const productionCases: SeoCase[] = [
     slug: "voronezh-stal",
     category: "Производство · Металлоконструкции",
     title: "Воронеж Сталь",
-    meta: "Воронеж · Яндекс · срез Topvisor 14.06.2026",
+    meta: "Воронеж · Яндекс · срез Topvisor 22.11.2025",
     image: "/cases/voronezh-stal-topvisor.png",
     imageAlt: "Позиции проекта Воронеж Сталь в Topvisor",
     highlights: [
