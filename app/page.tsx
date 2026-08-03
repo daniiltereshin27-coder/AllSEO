@@ -7,7 +7,7 @@ import {
   QuickLeadTrigger,
 } from "@/components/QuickLeadModal";
 import { Reveal } from "@/components/Reveal";
-import { CasesExplorer } from "@/components/CasesExplorer";
+import { LazyCasesExplorer } from "@/components/LazyCasesExplorer";
 import { ReferralProgram } from "@/components/ReferralProgram";
 import { StickyCta } from "@/components/StickyCta";
 import { TrackedLink } from "@/components/TrackedLink";
@@ -185,7 +185,7 @@ export default function Home() {
         </div>
       </section>
 
-      <CasesExplorer />
+      <LazyCasesExplorer />
 
       <ReferralProgram />
 

@@ -1,7 +1,6 @@
 "use client";
 
 import { rankingQueries } from "@/lib/site-content";
-import gsap from "gsap";
 import { useEffect, useRef } from "react";
 
 export function HeroRankings() {
@@ -10,6 +9,8 @@ export function HeroRankings() {
   useEffect(() => {
     const root = rootRef.current;
     if (!root) return;
+    let cleanupAnimation: (() => void) | undefined;
+    let cancelled = false;
 
     const reduceMotion = window.matchMedia(
       "(prefers-reduced-motion: reduce)",
@@ -32,157 +33,173 @@ export function HeroRankings() {
     growthLine.style.strokeDashoffset = `${growthLength}`;
 
     if (reduceMotion || compactMotion) {
-      cards.forEach((card) => gsap.set(card, { xPercent: 0, opacity: 1 }));
+      cards.forEach((card) => {
+        card.style.opacity = "1";
+        card.style.transform = "translate3d(0, 0, 0) scale(1)";
+      });
       counters.forEach((counter, index) => {
         counter.textContent = String(rankingQueries[index].to);
       });
       confirmation?.classList.add("is-shown");
       if (goalCounter) goalCounter.textContent = "10";
       growthLine.style.strokeDashoffset = "0";
-      gsap.set([startMarker, endMarker], { opacity: 1, scale: 1 });
+      [startMarker, endMarker].forEach((marker) => {
+        if (!marker) return;
+        marker.style.opacity = "1";
+        marker.style.transform = "scale(1)";
+      });
       return;
     }
 
-    const context = gsap.context(() => {
-      gsap.set(cards, { x: 18, opacity: 0, scale: 0.97 });
-      gsap.set(confirmation, { opacity: 0, y: 8 });
-      gsap.set(glow, { opacity: 0 });
-      gsap.set(growthLine, { strokeDashoffset: growthLength });
-      gsap.set(startMarker, {
-        opacity: 0,
-        scale: 0.88,
-        transformOrigin: "left center",
-      });
-      gsap.set(endMarker, {
-        opacity: 0,
-        scale: 0.88,
-        transformOrigin: "right center",
-      });
-      if (goalCounter) goalCounter.textContent = "0";
+    void import("gsap").then(({ default: gsap }) => {
+      if (cancelled || !root.isConnected) return;
 
-      const timeline = gsap.timeline({
-        paused: true,
-      });
+      const context = gsap.context(() => {
+        gsap.set(cards, { x: 18, opacity: 0, scale: 0.97 });
+        gsap.set(confirmation, { opacity: 0, y: 8 });
+        gsap.set(glow, { opacity: 0 });
+        gsap.set(growthLine, { strokeDashoffset: growthLength });
+        gsap.set(startMarker, {
+          opacity: 0,
+          scale: 0.88,
+          transformOrigin: "left center",
+        });
+        gsap.set(endMarker, {
+          opacity: 0,
+          scale: 0.88,
+          transformOrigin: "right center",
+        });
+        if (goalCounter) goalCounter.textContent = "0";
 
-      timeline
-        .to(startMarker, {
-          opacity: 1,
-          scale: 1,
-          duration: 0.3,
-          ease: "back.out(1.6)",
-        })
-        .to(
-          growthLine,
-          {
-            strokeDashoffset: 0,
-            duration: 2.15,
-            ease: "power2.out",
-          },
-          ">-0.04",
-        )
-        .to(
-          endMarker,
-          {
+        const timeline = gsap.timeline({
+          paused: true,
+        });
+
+        timeline
+          .to(startMarker, {
             opacity: 1,
             scale: 1,
-            duration: 0.38,
-            ease: "back.out(1.8)",
-          },
-          ">-0.02",
-        );
-
-      [...cards].reverse().forEach((card, reverseIndex) => {
-        const index = cards.indexOf(card);
-        const startAt = 0.55 + reverseIndex * 0.11;
-
-        timeline.to(
-          card,
-          {
-            x: 0,
-            opacity: 1,
-            scale: 1,
-            duration: 0.32,
-            ease: "power2.out",
-          },
-          startAt,
-        );
-        timeline.to(
-          counters[index],
-          {
-            textContent: rankingQueries[index].to,
-            snap: { textContent: 1 },
-            duration: 0.42,
-            ease: "power1.out",
-          },
-          startAt,
-        );
-      });
-
-      timeline
-        .to(
-          glow,
-          {
-            opacity: 1,
-            duration: 0.4,
-          },
-          2.35,
-        )
-        .to(
-          confirmation,
-          {
-            opacity: 1,
-            y: 0,
-            duration: 0.35,
-            ease: "power2.out",
-          },
-          2.8,
-        );
-
-      if (goalCounter) {
-        const count = { value: 0 };
-        timeline.to(
-          count,
-          {
-            value: 10,
-            duration: 0.75,
-            ease: "power2.out",
-            snap: { value: 1 },
-            onUpdate: () => {
-              goalCounter.textContent = String(Math.round(count.value));
+            duration: 0.3,
+            ease: "back.out(1.6)",
+          })
+          .to(
+            growthLine,
+            {
+              strokeDashoffset: 0,
+              duration: 2.15,
+              ease: "power2.out",
             },
+            ">-0.04",
+          )
+          .to(
+            endMarker,
+            {
+              opacity: 1,
+              scale: 1,
+              duration: 0.38,
+              ease: "back.out(1.8)",
+            },
+            ">-0.02",
+          );
+
+        [...cards].reverse().forEach((card, reverseIndex) => {
+          const index = cards.indexOf(card);
+          const startAt = 0.55 + reverseIndex * 0.11;
+
+          timeline.to(
+            card,
+            {
+              x: 0,
+              opacity: 1,
+              scale: 1,
+              duration: 0.32,
+              ease: "power2.out",
+            },
+            startAt,
+          );
+          timeline.to(
+            counters[index],
+            {
+              textContent: rankingQueries[index].to,
+              snap: { textContent: 1 },
+              duration: 0.42,
+              ease: "power1.out",
+            },
+            startAt,
+          );
+        });
+
+        timeline
+          .to(
+            glow,
+            {
+              opacity: 1,
+              duration: 0.4,
+            },
+            2.35,
+          )
+          .to(
+            confirmation,
+            {
+              opacity: 1,
+              y: 0,
+              duration: 0.35,
+              ease: "power2.out",
+            },
+            2.8,
+          );
+
+        if (goalCounter) {
+          const count = { value: 0 };
+          timeline.to(
+            count,
+            {
+              value: 10,
+              duration: 0.75,
+              ease: "power2.out",
+              snap: { value: 1 },
+              onUpdate: () => {
+                goalCounter.textContent = String(Math.round(count.value));
+              },
+            },
+            2.92,
+          );
+        }
+
+        const observer = new IntersectionObserver(
+          ([entry]) => {
+            if (entry.isIntersecting) {
+              timeline.restart();
+            } else {
+              timeline.pause();
+            }
           },
-          2.92,
+          { threshold: 0.25 },
         );
-      }
+        observer.observe(root);
 
-      const observer = new IntersectionObserver(
-        ([entry]) => {
-          if (entry.isIntersecting) {
-            timeline.restart();
-          } else {
-            timeline.pause();
-          }
-        },
-        { threshold: 0.25 },
-      );
-      observer.observe(root);
+        const handlePointer = (event: PointerEvent) => {
+          const bounds = root.getBoundingClientRect();
+          const x = ((event.clientX - bounds.left) / bounds.width - 0.5) * 2;
+          const y = ((event.clientY - bounds.top) / bounds.height - 0.5) * 2;
+          root.style.setProperty("--pointer-x", `${x * 1.2}deg`);
+          root.style.setProperty("--pointer-y", `${y * 1}deg`);
+        };
+        root.addEventListener("pointermove", handlePointer);
 
-      const handlePointer = (event: PointerEvent) => {
-        const bounds = root.getBoundingClientRect();
-        const x = ((event.clientX - bounds.left) / bounds.width - 0.5) * 2;
-        const y = ((event.clientY - bounds.top) / bounds.height - 0.5) * 2;
-        root.style.setProperty("--pointer-x", `${x * 1.2}deg`);
-        root.style.setProperty("--pointer-y", `${y * 1}deg`);
-      };
-      root.addEventListener("pointermove", handlePointer);
+        return () => {
+          observer.disconnect();
+          root.removeEventListener("pointermove", handlePointer);
+        };
+      }, root);
 
-      return () => {
-        observer.disconnect();
-        root.removeEventListener("pointermove", handlePointer);
-      };
-    }, root);
+      cleanupAnimation = () => context.revert();
+    });
 
-    return () => context.revert();
+    return () => {
+      cancelled = true;
+      cleanupAnimation?.();
+    };
   }, []);
 
   return (

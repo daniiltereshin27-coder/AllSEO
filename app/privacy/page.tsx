@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 
 const policyText = `Политика в отношении обработки персональных данных
 1. Общие положения
@@ -65,9 +66,9 @@ export const metadata: Metadata = {
 export default function PrivacyPage() {
   return (
     <main className="privacy-page">
-      <a className="privacy-page__back" href="/">
+      <Link className="privacy-page__back" href="/">
         ← На главную
-      </a>
+      </Link>
       <article className="privacy-page__card">
         <h1>Политика обработки персональных данных</h1>
         <pre>{policyText}</pre>

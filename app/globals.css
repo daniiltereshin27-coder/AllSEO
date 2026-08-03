@@ -1813,6 +1813,14 @@ input:focus-visible {
   background: var(--paper);
 }
 
+.case-explorer-placeholder {
+  min-height: 56vh;
+}
+
+.case-explorer-placeholder .case-explorer__heading {
+  margin-bottom: 0;
+}
+
 .case-explorer__heading {
   display: grid;
   grid-template-columns: 0.7fr 1.7fr 0.9fr;
