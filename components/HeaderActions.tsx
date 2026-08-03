@@ -10,6 +10,7 @@ const menuItems = [
   { href: "#cases", label: "Кейсы" },
   { href: "#process", label: "Как работает" },
   { href: "#faq", label: "Вопросы" },
+  { href: "#referral", label: "Вознаграждение" },
 ];
 
 const messengerLinks = [
@@ -20,7 +21,7 @@ const messengerLinks = [
     goal: "wa",
   },
   {
-    href: "https://t.me/allerhand_digital",
+    href: "https://telegram.me/allerhand_digital",
     label: "Telegram",
     icon: "telegram",
     goal: "tg",

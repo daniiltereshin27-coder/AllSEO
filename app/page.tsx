@@ -8,6 +8,7 @@ import {
 } from "@/components/QuickLeadModal";
 import { Reveal } from "@/components/Reveal";
 import { CasesExplorer } from "@/components/CasesExplorer";
+import { ReferralProgram } from "@/components/ReferralProgram";
 import { StickyCta } from "@/components/StickyCta";
 import { TrackedLink } from "@/components/TrackedLink";
 import { siteContent } from "@/lib/site-content";
@@ -50,6 +51,7 @@ export default function Home() {
           <a href="#cases">Кейсы</a>
           <a href="#process">Как работает</a>
           <a href="#faq">Вопросы</a>
+          <a href="#referral">Вознаграждение</a>
         </nav>
         <HeaderActions />
       </header>
@@ -184,6 +186,8 @@ export default function Home() {
       </section>
 
       <CasesExplorer />
+
+      <ReferralProgram />
 
       <section className="section section--audience">
         <div className="container">

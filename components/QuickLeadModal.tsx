@@ -15,11 +15,13 @@ const OPEN_QUICK_LEAD_EVENT = "open-quick-lead";
 type QuickLeadTriggerProps = ButtonHTMLAttributes<HTMLButtonElement> & {
   children: ReactNode;
   source: string;
+  variant?: "quick" | "referral";
 };
 
 export function QuickLeadTrigger({
   children,
   source,
+  variant = "quick",
   onClick,
   ...props
 }: QuickLeadTriggerProps) {
@@ -30,7 +32,9 @@ export function QuickLeadTrigger({
       onClick={(event) => {
         trackGoal("cta_click", { source });
         window.dispatchEvent(
-          new CustomEvent(OPEN_QUICK_LEAD_EVENT, { detail: { source } }),
+          new CustomEvent(OPEN_QUICK_LEAD_EVENT, {
+            detail: { source, variant },
+          }),
         );
         onClick?.(event);
       }}
@@ -43,6 +47,7 @@ export function QuickLeadTrigger({
 export function QuickLeadModal() {
   const [open, setOpen] = useState(false);
   const [source, setSource] = useState("quick_lead");
+  const [variant, setVariant] = useState<"quick" | "referral">("quick");
   const [site, setSite] = useState("");
   const [phone, setPhone] = useState("");
   const [status, setStatus] = useState<
@@ -53,8 +58,12 @@ export function QuickLeadModal() {
 
   useEffect(() => {
     const handleOpen = (event: Event) => {
-      const customEvent = event as CustomEvent<{ source?: string }>;
+      const customEvent = event as CustomEvent<{
+        source?: string;
+        variant?: "quick" | "referral";
+      }>;
       setSource(customEvent.detail?.source ?? "quick_lead");
+      setVariant(customEvent.detail?.variant ?? "quick");
       setSite("");
       setPhone("");
       setMessage("");
@@ -86,8 +95,9 @@ export function QuickLeadModal() {
   async function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
     const errors: Record<string, string> = {};
+    const isReferral = variant === "referral";
 
-    if (!site.trim()) errors.site = "Укажите адрес сайта.";
+    if (!isReferral && !site.trim()) errors.site = "Укажите адрес сайта.";
     if (!normalizeRussianPhone(phone)) {
       errors.contact = "Укажите телефон полностью: +7 (999) 000-00-00.";
     }
@@ -113,8 +123,10 @@ export function QuickLeadModal() {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
-          site,
-          niche: `Выбор запросов · ${source}`,
+          site: isReferral ? "https://seoallerhand.ru/referral" : site,
+          niche: isReferral
+            ? `Реферальная программа · ${source}`
+            : `Выбор запросов · ${source}`,
           contact: normalizeRussianPhone(phone),
           consent: true,
           utm,
@@ -136,8 +148,16 @@ export function QuickLeadModal() {
       }
 
       setStatus("success");
-      trackGoal("zapros", { form: "quick_lead", source, utm });
-      trackGoal("lead_success", { form: "quick_lead", source, utm });
+      if (variant !== "referral") {
+        trackGoal("zapros", { form: "quick_lead", source, utm });
+      } else {
+        trackGoal("recom", { form: "referral_program", source, utm });
+      }
+      trackGoal("lead_success", {
+        form: variant === "referral" ? "referral_program" : "quick_lead",
+        source,
+        utm,
+      });
     } catch (error) {
       const errorMessage =
         error instanceof Error
@@ -179,40 +199,55 @@ export function QuickLeadModal() {
           <div className="case-lead-modal__success" role="status">
             <span>✓</span>
             <p>Заявка принята</p>
-            <h3>Подберём запросы и свяжемся с вами</h3>
+            <h3>
+              {variant === "referral"
+                ? "Свяжемся и обсудим сотрудничество"
+                : "Подберём запросы и свяжемся с вами"}
+            </h3>
             <button type="button" onClick={() => setOpen(false)}>
               Закрыть
             </button>
           </div>
         ) : (
           <>
-            <p className="case-lead-modal__eyebrow">Бесплатный демо-тест</p>
-            <h3 id="quick-lead-title">Выберем запросы для вашего сайта</h3>
+            <p className="case-lead-modal__eyebrow">
+              {variant === "referral"
+                ? "Реферальная программа"
+                : "Бесплатный демо-тест"}
+            </p>
+            <h3 id="quick-lead-title">
+              {variant === "referral"
+                ? "Оставить заявку на сотрудничество"
+                : "Выберем запросы для вашего сайта"}
+            </h3>
             <p className="case-lead-modal__description">
-              Оставьте сайт и телефон. Менеджер свяжется в течение 5 минут и
-              согласует группу целевых запросов.
+              {variant === "referral"
+                ? "Оставьте номер телефона. Менеджер свяжется с вами и расскажет, как закрепить рекомендацию и получать 15%."
+                : "Оставьте сайт и телефон. Менеджер свяжется в течение 5 минут и согласует группу целевых запросов."}
             </p>
             <form onSubmit={handleSubmit} noValidate>
-              <label>
-                <span>Адрес сайта</span>
-                <input
-                  type="text"
-                  inputMode="url"
-                  autoComplete="url"
-                  placeholder="example.ru"
-                  value={site}
-                  aria-invalid={Boolean(fieldErrors.site)}
-                  onChange={(event) => {
-                    setSite(event.target.value);
-                    setFieldErrors((current) => ({ ...current, site: "" }));
-                  }}
-                />
-                {fieldErrors.site && (
-                  <small className="quick-lead-modal__field-error">
-                    {fieldErrors.site}
-                  </small>
-                )}
-              </label>
+              {variant !== "referral" && (
+                <label>
+                  <span>Адрес сайта</span>
+                  <input
+                    type="text"
+                    inputMode="url"
+                    autoComplete="url"
+                    placeholder="example.ru"
+                    value={site}
+                    aria-invalid={Boolean(fieldErrors.site)}
+                    onChange={(event) => {
+                      setSite(event.target.value);
+                      setFieldErrors((current) => ({ ...current, site: "" }));
+                    }}
+                  />
+                  {fieldErrors.site && (
+                    <small className="quick-lead-modal__field-error">
+                      {fieldErrors.site}
+                    </small>
+                  )}
+                </label>
+              )}
               <label>
                 <span>Телефон</span>
                 <input
@@ -246,7 +281,9 @@ export function QuickLeadModal() {
                 <span>
                   {status === "loading"
                     ? "Отправляем…"
-                    : "Продвинуть запросы за 0₽"}
+                    : variant === "referral"
+                      ? "Оставить заявку"
+                      : "Продвинуть запросы за 0₽"}
                 </span>
                 <i className="icon-arrow" aria-hidden="true" />
               </button>
