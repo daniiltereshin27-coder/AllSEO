@@ -22,8 +22,13 @@ function formatUtm(utm: Record<string, string>) {
 }
 
 function buildTelegramMessage(lead: LeadPayload, meta: LeadMeta) {
+  const title =
+    lead.leadType === "abandoned_phone"
+      ? "⚠️ Незавершённая заявка: пользователь ввёл телефон, но не нажал кнопку"
+      : "Новая заявка Allerhand SEO";
+
   return [
-    "<b>Новая заявка Allerhand SEO</b>",
+    `<b>${escapeHtml(title)}</b>`,
     "",
     `🌐 <b>Сайт:</b> ${escapeHtml(lead.site)}`,
     `📞 <b>Телефон:</b> ${escapeHtml(lead.contact)}`,

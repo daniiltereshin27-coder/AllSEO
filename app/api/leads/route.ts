@@ -100,7 +100,7 @@ export async function POST(request: NextRequest) {
 
   const duplicateKey = createHash("sha256")
     .update(
-      `${ip}|${validation.data.site.toLowerCase()}|${validation.data.contact.toLowerCase()}`,
+      `${ip}|${validation.data.leadType}|${validation.data.site.toLowerCase()}|${validation.data.contact.toLowerCase()}|${validation.data.niche.toLowerCase()}`,
     )
     .digest("hex");
 
@@ -149,7 +149,10 @@ export async function POST(request: NextRequest) {
               : {}),
           },
           body: JSON.stringify({
-            event: "allerhand_seo_demo_request",
+            event:
+              validation.data.leadType === "abandoned_phone"
+                ? "allerhand_seo_abandoned_phone"
+                : "allerhand_seo_demo_request",
             lead: validation.data,
             meta,
           }),

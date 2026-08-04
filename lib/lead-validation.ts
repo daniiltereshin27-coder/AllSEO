@@ -5,6 +5,7 @@ export type LeadPayload = {
   niche: string;
   contact: string;
   consent: boolean;
+  leadType: "submitted" | "abandoned_phone";
   utm: Record<string, string>;
   pageUrl: string;
   submittedAt: string;
@@ -20,6 +21,15 @@ function normalizeSite(value: string) {
   return /^https?:\/\//i.test(trimmed) ? trimmed : `https://${trimmed}`;
 }
 
+function fallbackSite(pageUrl: string) {
+  try {
+    const url = new URL(pageUrl);
+    return url.origin;
+  } catch {
+    return "https://seoallerhand.ru";
+  }
+}
+
 export function validateLead(input: unknown): ValidationResult {
   if (!input || typeof input !== "object") {
     return { success: false, message: "Некорректные данные формы." };
@@ -27,7 +37,13 @@ export function validateLead(input: unknown): ValidationResult {
 
   const candidate = input as Partial<LeadPayload>;
   const fields: Record<string, string> = {};
-  const normalizedSite = normalizeSite(String(candidate.site ?? ""));
+  const leadType =
+    candidate.leadType === "abandoned_phone" ? "abandoned_phone" : "submitted";
+  const pageUrl = String(candidate.pageUrl ?? "").slice(0, 1000);
+  const normalizedSite = normalizeSite(
+    String(candidate.site ?? "") ||
+      (leadType === "abandoned_phone" ? fallbackSite(pageUrl) : ""),
+  );
   const niche = String(candidate.niche ?? "").trim() || "Не указана";
   const contact = normalizeRussianPhone(String(candidate.contact ?? ""));
 
@@ -48,7 +64,7 @@ export function validateLead(input: unknown): ValidationResult {
     fields.contact = "Укажите телефон полностью: +7 (999) 000-00-00.";
   }
 
-  if (candidate.consent !== true) {
+  if (leadType === "submitted" && candidate.consent !== true) {
     fields.consent = "Нужно согласие на обработку данных.";
   }
 
@@ -80,9 +96,10 @@ export function validateLead(input: unknown): ValidationResult {
       site: normalizedSite,
       niche,
       contact,
-      consent: true,
+      consent: candidate.consent === true,
+      leadType,
       utm,
-      pageUrl: String(candidate.pageUrl ?? "").slice(0, 1000),
+      pageUrl,
       submittedAt: String(candidate.submittedAt ?? new Date().toISOString()),
     },
   };

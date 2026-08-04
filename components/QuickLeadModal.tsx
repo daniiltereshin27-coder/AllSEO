@@ -1,6 +1,7 @@
 "use client";
 
 import { trackGoal } from "@/lib/analytics";
+import { useAbandonedPhoneLead } from "@/hooks/useAbandonedPhoneLead";
 import { formatRussianPhone, normalizeRussianPhone } from "@/lib/phone";
 import {
   type ButtonHTMLAttributes,
@@ -53,6 +54,7 @@ export function QuickLeadModal() {
   const [status, setStatus] = useState<
     "idle" | "loading" | "success" | "error"
   >("idle");
+  const [submitAttempted, setSubmitAttempted] = useState(false);
   const [message, setMessage] = useState("");
   const [fieldErrors, setFieldErrors] = useState<Record<string, string>>({});
 
@@ -69,6 +71,7 @@ export function QuickLeadModal() {
       setMessage("");
       setFieldErrors({});
       setStatus("idle");
+      setSubmitAttempted(false);
       setOpen(true);
     };
 
@@ -94,6 +97,7 @@ export function QuickLeadModal() {
 
   async function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
+    setSubmitAttempted(true);
     const errors: Record<string, string> = {};
     const isReferral = variant === "referral";
 
@@ -172,6 +176,17 @@ export function QuickLeadModal() {
       });
     }
   }
+
+  useAbandonedPhoneLead({
+    phone,
+    site: variant === "referral" ? "https://seoallerhand.ru/referral" : site,
+    source:
+      variant === "referral"
+        ? `Реферальная программа · ${source}`
+        : `Выбор запросов · ${source}`,
+    enabled: open,
+    submitted: submitAttempted || status === "loading" || status === "success",
+  });
 
   if (!open) return null;
 

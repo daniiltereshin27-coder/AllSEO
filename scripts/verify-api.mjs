@@ -58,6 +58,27 @@ try {
   assert.equal(webhookBody.lead.contact, "+7 (999) 000-00-01");
   assert.deepEqual(webhookBody.lead.utm, { utm_source: "qa" });
 
+  delivered = undefined;
+  const abandoned = await POST(
+    request(
+      {
+        leadType: "abandoned_phone",
+        contact: "+7 (999) 000-00-04",
+        consent: false,
+        niche: "Незавершённая заявка · qa-form",
+        pageUrl: "https://landing.test/?utm_source=qa",
+        submittedAt: "2026-06-24T18:01:00.000Z",
+      },
+      "198.51.100.22",
+    ),
+  );
+  assert.equal(abandoned.status, 200);
+  const abandonedWebhookBody = JSON.parse(delivered.init.body);
+  assert.equal(abandonedWebhookBody.event, "allerhand_seo_abandoned_phone");
+  assert.equal(abandonedWebhookBody.lead.leadType, "abandoned_phone");
+  assert.equal(abandonedWebhookBody.lead.site, "https://landing.test");
+  assert.equal(abandonedWebhookBody.lead.contact, "+7 (999) 000-00-04");
+
   const duplicate = await POST(request(validLead, "198.51.100.2"));
   assert.equal(duplicate.status, 409);
 
@@ -95,7 +116,7 @@ try {
   );
   assert.equal(rateLimited.status, 429);
 
-  console.log("API verification passed: validation, delivery, duplicate, error, timeout, rate limit.");
+  console.log("API verification passed: validation, delivery, abandoned lead, duplicate, error, timeout, rate limit.");
 } finally {
   globalThis.fetch = originalFetch;
   delete process.env.LEAD_WEBHOOK_URL;

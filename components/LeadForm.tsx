@@ -1,6 +1,7 @@
 "use client";
 
 import { trackGoal } from "@/lib/analytics";
+import { useAbandonedPhoneLead } from "@/hooks/useAbandonedPhoneLead";
 import { formatRussianPhone } from "@/lib/phone";
 import { type FormEvent, useEffect, useRef, useState } from "react";
 
@@ -27,6 +28,7 @@ export function LeadForm({ id, variant = "hero" }: LeadFormProps) {
   const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">(
     "idle",
   );
+  const [submitAttempted, setSubmitAttempted] = useState(false);
   const [message, setMessage] = useState("");
   const formRef = useRef<HTMLFormElement>(null);
   const startedRef = useRef(false);
@@ -59,6 +61,7 @@ export function LeadForm({ id, variant = "hero" }: LeadFormProps) {
 
   async function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
+    setSubmitAttempted(true);
     setStatus("loading");
     setMessage("");
     setFieldErrors({});
@@ -107,6 +110,13 @@ export function LeadForm({ id, variant = "hero" }: LeadFormProps) {
       trackGoal("form_error", { form: id, message: errorMessage });
     }
   }
+
+  useAbandonedPhoneLead({
+    phone: fields.contact,
+    site: fields.site,
+    source: id,
+    submitted: submitAttempted || status === "loading" || status === "success",
+  });
 
   if (status === "success") {
     return (

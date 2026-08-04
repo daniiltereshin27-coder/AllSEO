@@ -58,9 +58,15 @@ function formatUtm(utm: Record<string, string>) {
 }
 
 function buildLeadEmail(lead: LeadPayload, meta: LeadMeta) {
-  const subject = `Новая заявка Allerhand SEO — ${lead.contact}`;
+  const isAbandoned = lead.leadType === "abandoned_phone";
+  const title = isAbandoned
+    ? "Незавершённая заявка: пользователь ввёл телефон, но не нажал кнопку"
+    : "Новая заявка с лендинга Allerhand SEO";
+  const subject = isAbandoned
+    ? `Незавершённая заявка Allerhand SEO — ${lead.contact}`
+    : `Новая заявка Allerhand SEO — ${lead.contact}`;
   const plainText = [
-    "Новая заявка с лендинга Allerhand SEO",
+    title,
     "",
     `Сайт: ${lead.site}`,
     `Контакт: ${lead.contact}`,
@@ -97,7 +103,7 @@ function buildLeadEmail(lead: LeadPayload, meta: LeadMeta) {
           <table role="presentation" width="100%" cellspacing="0" cellpadding="0" style="max-width:720px;background:#fff;border:1px solid #e1e1dc;border-radius:24px;padding:28px;">
             <tr><td>
               <p style="margin:0 0 12px;color:#fc3f1d;font-size:13px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;">Allerhand SEO</p>
-              <h1 style="margin:0 0 24px;font-size:28px;line-height:1.1;">Новая заявка с лендинга</h1>
+              <h1 style="margin:0 0 24px;font-size:28px;line-height:1.1;">${escapeHtml(title)}</h1>
               <table role="presentation" width="100%" cellspacing="0" cellpadding="0" style="border-collapse:collapse;font-size:16px;line-height:1.45;">
                 <tr><th align="left" style="padding:12px;border-top:1px solid #eee;background:#ffcc00;border-radius:12px 0 0 0;">Сайт</th><td style="padding:12px;border-top:1px solid #eee;background:#fff7cc;border-radius:0 12px 0 0;">${escapeHtml(lead.site)}</td></tr>
                 <tr><th align="left" style="padding:12px;border-top:1px solid #eee;">Телефон</th><td style="padding:12px;border-top:1px solid #eee;font-weight:700;">${escapeHtml(lead.contact)}</td></tr>

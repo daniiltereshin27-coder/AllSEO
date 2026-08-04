@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import { trackGoal } from "@/lib/analytics";
+import { useAbandonedPhoneLead } from "@/hooks/useAbandonedPhoneLead";
 import { formatRussianPhone, normalizeRussianPhone } from "@/lib/phone";
 import {
   useCallback,
@@ -67,6 +68,7 @@ export function CasesExplorer() {
   const [leadStatus, setLeadStatus] = useState<
     "idle" | "loading" | "success" | "error"
   >("idle");
+  const [leadSubmitAttempted, setLeadSubmitAttempted] = useState(false);
   const [leadMessage, setLeadMessage] = useState("");
   const [canScrollLeft, setCanScrollLeft] = useState(false);
   const [canScrollRight, setCanScrollRight] = useState(true);
@@ -125,12 +127,14 @@ export function CasesExplorer() {
     setLeadPhone("");
     setLeadStatus("idle");
     setLeadMessage("");
+    setLeadSubmitAttempted(false);
     trackGoal("case_cta_click", { case: item.slug });
   };
 
   const submitCaseLead = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     if (!leadCase) return;
+    setLeadSubmitAttempted(true);
 
     const contact = normalizeRussianPhone(leadPhone);
     if (!contact) {
@@ -194,6 +198,18 @@ export function CasesExplorer() {
       });
     }
   };
+
+  useAbandonedPhoneLead({
+    phone: leadPhone,
+    source: leadCase
+      ? `Хочу также — кейс ${leadCase.title}`
+      : "Хочу также — кейс",
+    enabled: Boolean(leadCase),
+    submitted:
+      leadSubmitAttempted ||
+      leadStatus === "loading" ||
+      leadStatus === "success",
+  });
 
   const scrollCategories = (direction: -1 | 1) => {
     const element = categoriesRef.current;
