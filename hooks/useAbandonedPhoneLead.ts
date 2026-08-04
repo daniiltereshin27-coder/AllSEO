@@ -33,7 +33,7 @@ export function useAbandonedPhoneLead({
   site,
   enabled = true,
   submitted = false,
-  delayMs = 2_000,
+  delayMs = 4_000,
 }: UseAbandonedPhoneLeadOptions) {
   const sentKeysRef = useRef(new Set<string>());
 
